@@ -5,8 +5,6 @@ const cors = require('cors') // чтобы отправлять запросы �
 const router = require('./routers/index.js')
 
 
-
-
 const PORT = 3000
 
 const app = express()
@@ -21,7 +19,7 @@ app.get('/', (req, res)=>{
 const start = async () => {
     try {
         await sequelize.authenticate() // функция для подключения к бд
-        await sequelize.sync() // функция сверяет состояние бд со схемой данных
+        await sequelize.sync() // функция сверяет состояние бд со схемой данных, создает таблицы, если их нет
         app.listen(PORT, ()=>{console.log(`Server start ${PORT}`)})
     } catch (error) {
         console.log(error);
